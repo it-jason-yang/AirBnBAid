@@ -1,11 +1,158 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+  <script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"
+></script>
+
   <head>
-    <title><%= title %></title>
+    <title>
+      <%= title %>
+    </title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+
+<body>
+  <script>
+
+    // 1. 테스트 입력항목 value를 test_input 객체에 추가
+    let gatherChecked = {}
+
+    //라디오버튼 하나씩 돌면서 체크된 순서의 인덱스를 받는다.
+    //순서대로 받고, 그 인덱스의 조합으로 resultType을 요청한다.
+    const findChecked = (askType) => {
+      let askTypeLength = document.getElementsByName(askType).length;
+      for (let i = 0; i < askTypeLength; i++) {
+        if (document.getElementsByName(askType)[i].checked) {
+          return i.toString()
+        }
+      }
+    }
+
+    function getChecked() {
+      alert('getChecked 함수 진입')
+      let resultType = findChecked('houseType') + findChecked('locationType') + findChecked('hostType') + findChecked('guestType')
+      return {resultType}
+    }
+
+    // 2. 1번 단계에서 수집한 값을 기준으로 서버에서 조건에 따라 db에 저장된 결과 전달
+    function showResult() {
+      let resultType = getChecked()
+
+      // $('#result_box').empty();  //결과확인 여러번 클릭 시 중복으로 찍히지 않도록
+      // dataType json으로 해두니, data 객체로 잘넘어감
+      $.ajax({
+        type: 'POST',
+        url: '/legalCheck',
+        dataType: 'json',
+        data: resultType,
+        success: function (response) {
+          alert('검토완료! 결과를 확인하세요.');
+          console.log(response);
+          // let results = response['final_results']
+          // for (let i = 0; i < results.length; i++) {
+          //   let title = results[i]['result_title']
+          //   let des = results[i]['result_des']
+          //   let temp_html = `<div class = 'result'>
+          //                                   <tr>
+          //                                       <td><h3>${title}</h3></td>
+          //                                       <td>${des}</td>
+          //                                   </tr>
+          //                               </div>`
+          //   $('#result_box').append(temp_html)
+          // }
+        }
+      });
+    }
+
+  </script>
+
+  <style>
+    div {
+      color: cornflowerblue;
+      margin: 20px auto;
+    }
+  </style>
+
+  <h1>
+    <%= title %>
+  </h1>
+  <p>Welcome to <%= title %>
+  </p>
+  <div id="nav-bar">
+    [nav-bar area]
+  </div>
+  <div id="test-area">
+    [test area]
+    <div>
+      부동산 종류
+      <div>
+        <div class="option_box">
+          <label for="한옥"></label>
+          <div class="option_radio">
+            <input type="radio" id="한옥" name="houseType" value="한옥" checked>
+            <label for="한옥">한옥</label>
+          </div>
+        </div>
+        <div class="option_box">
+          <label for="단독주택"></label>
+          <div class="option_radio">
+            <input type="radio" id="단독주택" name="houseType" value="단독주택">
+            <label for="단독주택">단독주택/다가구주택</label>
+          </div>
+        </div>
+        <div class="option_box">
+          <label for="공동주택"></label>
+          <div class="option_radio">
+            <input type="radio" id="공동주택" name="houseType" value="공동주택">
+            <label for="공동주택">연립주택/다세대주택/아파트</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      부동산 위치
+      <div class="type_location">
+        <input type="radio" id="농어촌" name="locationType" value="농어촌" checked>
+        <label for="농어촌">(준)농어촌지역</label> <br>
+
+        <input type="radio" id="서울" name="locationType" value="서울">
+        <label for="서울">서울(지하철 1~9호선 1km이내)</label> <br>
+
+        <input type="radio" id="도시" name="locationType" value="도시">
+        <label for="도시">그 외 도시</label>
+      </div>
+    </div>
+    <div>
+      호스트
+      <div id="type_host">
+        <input type="radio" id="전입" name="hostType" value="전입" checked>
+        <label for="전입">전입</label> <br>
+
+        <input type="radio" id="미전입" name="hostType" value="미전입">
+        <label for="미전입">미전입</label>
+      </div>
+    </div>
+    <div>
+      게스트
+      <div class="type_guest">
+        <input type="radio" id="내/외국인" name="guestType" value="내/외국인" checked>
+        <label for="내/외국인">내/외국인</label> <br>
+
+        <input type="radio" id="외국인" name="guestType" value="외국인">
+        <label for="외국인">외국인</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="result_button">
+    <!--버튼의 파라미터로 선택한 체크박스들 값이 들어가고, 해당 파라미터를 조건으로 서버에서 조건 판단하여 결과 리턴하면 됨-->
+    <button onclick="showResult()" type="button" class="btn btn-primary"> 결과 확인</button>
+</div>
+
+</body>
+
 </html>

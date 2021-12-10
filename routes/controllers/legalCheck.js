@@ -1,7 +1,6 @@
 const { LegalTestResults, Sequelize } = require('../../models');
 const createError = require('http-errors');
 
-
 //클라이언트에서 체크값들 연결해서 요청하면
 //연결된 값 받아서 DB내 ResultId 동일한 항목 가져옴
 
@@ -24,7 +23,6 @@ const callCntUp = async (resultType) => {
 
 const getLegalResult = async (req, res, next) => {
     const { resultType } = req.body;
-
     try {
         console.log('legalCheck 컨트롤러 내 getLegalResult 함수 실행');
 
