@@ -2,6 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 var logger = require('morgan');
 const { sequelize } = require("./models");
 
@@ -9,6 +10,10 @@ var indexRouter = require('./routes/index');
 var legalCheckRouter = require('./routes/legalCheck');
 
 var app = express();
+
+// json/ utf-8 관련한 에러가 나오면.. 한번 주석풀고 테스트해보자.
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({extended: true}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
