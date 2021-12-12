@@ -16,7 +16,12 @@ module.exports = (sequelize, DataTypes) => {
   LegalTestResults.init({
     resultType: DataTypes.STRING,
     title: DataTypes.STRING,
-    description: DataTypes.STRING,
+    law: DataTypes.STRING,
+    houseType: DataTypes.STRING,
+    houseLocation: DataTypes.STRING,
+    guest: DataTypes.STRING,
+    host: DataTypes.STRING,
+    info: DataTypes.STRING,
     callCnt: {
             type: DataTypes.INTEGER,
             defaultValue: 0,
