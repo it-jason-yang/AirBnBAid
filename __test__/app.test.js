@@ -39,21 +39,16 @@ describe('legalCheck API', () => {
                 ]))
             })
     });
-    it('POST /legalCheck --> request body 가 없다면 상태코드 422를 응답한다.', async () => {
-        return await request(app)
-            .post('/legalCheck').send({}).expect(422)
-    });
-    it('POST /legalCheck --> request body 가 있지만 DB 내 해당 레코드가 없다면 resultType : "0" 데이터를 응답한다.', async () => {
+    it('POST /legalCheck --> request body 가 없는 경우 상태코드 200을 응답하고 resultType = "0" 데이터를 응답한다.', async () => {
         return await request(app)
             .post('/legalCheck')
-            .send({"resultType" : ""})
+            .send({})
+            .expect(200)
             .expect('Content-Type', /json/)
             .then((response) => {
                 expect(response.body).toEqual(expect.arrayContaining([
                     expect.objectContaining({
-                        title: expect.any(String),
-                        description: expect.any(String),
-                        resultType: "0"
+                        resultType: "0",
                     })
                 ]))
             })

@@ -62,8 +62,6 @@ const getLegalResult = async (req, res, next) => {
 
     const { checkVal } = req.body;
     const resultType = calcResultType(checkVal)
-    console.log('@@@@@@@@')
-    console.log(resultType)
 
     try {
         console.log('legalCheck 컨트롤러 내 getLegalResult 함수 실행');
