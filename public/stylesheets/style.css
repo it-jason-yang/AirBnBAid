@@ -6,3 +6,9 @@ body {
 a {
   color: #00B7FF;
 }
+
+div {
+  width: 70%;
+  padding: 10px;
+  border: 1px solid blue;
+}
