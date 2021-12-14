@@ -1,5 +1,4 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -50,11 +49,60 @@ a {
   width: 300px;
 }
 
+.option_radio{
+  margin-top: 10px;
+  font-size: 15px;
+}
+
 .accordion{
   margin-top: 30px;
 }
 
 #result_button{
-  margin-top: 30px;
+  margin: 30px;
   text-align: center;
+}
+
+#result{
+  margin-top: 25px;
+  margin-bottom: 25px;
+  background-color:seashell;
+  border-radius: 15px;
+}
+
+/* #result_box .content:nth-child(odd){
+  margin-bottom: red solid 2px;
+  margin: 100px;
+  color: #00B7FF;
+} */
+
+.content{
+  padding: 20px;
+}
+
+.content h3 {
+  font-size: x-large;
+  text-align: center;
+  text-decoration: underline;
+  margin-bottom: 30px;
+}
+
+.result_table {
+  width: 80%;
+}
+
+.result_thead tr:nth-child(1){
+  text-align: center;
+  font-size: 20px;
+}
+
+.result_table td:nth-child(odd){
+  text-align: center;
+  font-weight: bolder;
+  margin-top: 49px;
+  width: 30%;
+}
+
+.result_table td:nth-child(even){
+  width: auto;
 }
