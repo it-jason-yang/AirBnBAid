@@ -30,6 +30,7 @@
 
     const getChecked = () => {
       let checkVal = findChecked('houseType') + findChecked('locationType') + findChecked('hostType') + findChecked('guestType')
+      console.log(checkVal)
       return { checkVal }
     }
 
@@ -358,7 +359,7 @@
         <div class="option_box">
           <label for="미전입"><img src="images/house_sample.jpg" class="option_img" alt="house_img"></label>
           <div class="option_radio">
-            <input type="radio" id="미전입" name="hostType" value="미전입" checked>
+            <input type="radio" id="미전입" name="hostType" value="미전입">
             <label for="미전입">미전입</label>
           </div>
         </div>

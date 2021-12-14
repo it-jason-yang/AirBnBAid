@@ -1,5 +1,6 @@
 const { LegalTestResults, Sequelize } = require('../../models');
 const createError = require('http-errors');
+const calcTypes = require('../constants/calcTypes.js');
 const Op = Sequelize.Op;
 
 //클라이언트에서 체크값들 연결해서 요청하면
@@ -22,38 +23,52 @@ const callCntUp = async (resultType) => {
     }
 }
 
+const repeatConditionFn = (condition, targetVariable, ...datas) => {
+    if (condition == 'or') {
+        
+    }
+    let temp = 'space'
+    for (const data of datas) {
+
+        temp += '|| data' 
+    }
+}
+
 //테스트 체크 결과를 받아서 해당하는 resultType Array를 리턴하는 함수
 //1:외국인관광 도시민박업, 2:농어촌민박업, 3:한옥체험업, 4:공유숙박업
 const calcResultType = (checkVal) => {
     try {
-        if (checkVal == ('0000' || '0001')) {
+        // if (checkVal == '0000' || checkVal == '0001') {
+        //     return ['2', '3']
+        // }
+        if (calcTypes.calcType1.includes(checkVal)) {
             return ['2', '3']
         }
-        if (checkVal == ('0010' || '0011' || '0110' || '0111' || '0200' || '0210' || '0211')) {
+        if (calcTypes.calcType2.includes(checkVal)) {
             return ['3']
         }
-        if (checkVal == ('0100')) {
+        if (calcTypes.calcType3.includes(checkVal)) {
             return ['3', '4']
         }
-        if (checkVal == ('0101')) {
+        if (calcTypes.calcType4.includes(checkVal)) {
             return ['1', '3', '4']
         }
-        if (checkVal == ('0201')) {
+        if (calcTypes.calcType5.includes(checkVal)) {
             return ['1', '3']
         }
-        if (checkVal == ('1000' || '2000')) {
+        if (calcTypes.calcType6.includes(checkVal)) {
             return ['2']
         }
-        if (checkVal == ('1001' || '2001')) {
+        if (calcTypes.calcType7.includes(checkVal)) {
             return ['1', '2']
         }
-        if (checkVal == ('1100' || '2100')) {
+        if (calcTypes.calcType8.includes(checkVal)) {
             return ['4']
         }
-        if (checkVal == ('1101' || '2101')) {
+        if (calcTypes.calcType9.includes(checkVal)) {
             return ['1', '4']
         }
-        if (checkVal == ('1201' || '2201')) {
+        if (calcTypes.calcType10.includes(checkVal)) {
             return ['1']
         }
 
@@ -68,7 +83,9 @@ const calcResultType = (checkVal) => {
 const getLegalResult = async (req, res, next) => {
 
     const { checkVal } = req.body;
+    console.log(checkVal)
     const resultType = calcResultType(checkVal)
+    console.log(resultType)
 
     try {
         console.log('legalCheck 컨트롤러 내 getLegalResult 함수 실행');
