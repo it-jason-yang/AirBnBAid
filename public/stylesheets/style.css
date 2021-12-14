@@ -7,8 +7,41 @@ a {
   color: #00B7FF;
 }
 
-div {
-  width: 70%;
-  padding: 10px;
-  border: 1px solid blue;
+.navbar {
+  box-shadow: 0 4px 2px -2px gray;
+}
+
+.section{
+  text-align: center;
+}
+
+.container{
+  border: brown solid 1px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.option_title{
+  font-size: xx-large;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.option_group{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.option_box{
+  display: inline-block;
+  padding: 5px;  
+}
+
+.option_img{
+  width: 300px;
+}
+
+#result_button{
+  margin-top: 30px;
+  text-align: center;
 }

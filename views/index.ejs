@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
   crossorigin="anonymous"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 
 <head>
+  <meta charset="UTF-8">
+  <meta property="og:title" content="방문을 환영합니다 | AirBnBAid" />
+  <meta property="og:description" content="임대 또는 소유하고있는 집을 공유하고 싶다면 합법적으로 운영할 수 있는지 체크해보세요!" />
+  <meta property="og:image" content="{{ url_for('images', filename='og_abba.png') }}" />
 
   <script>
     //라디오버튼 하나씩 돌면서 체크된 순서의 인덱스를 받는다.
@@ -77,8 +84,6 @@
         }
       });
     }
-
-    module.exports = { findChecked, getChecked, convertHtml, showResult }
   </script>
 
   <title>
@@ -90,41 +95,94 @@
 <body>
 
   <style>
-    div {
-      color: cornflowerblue;
-      margin: 20px auto;
-    }
+
   </style>
 
-  <h1>
-    <%= title %>
-  </h1>
-  <p>Welcome to <%= title %>
-  </p>
-  <div id="nav-bar">
-    [nav-bar area]
-  </div>
-  <div id="test-area">
-    [test area]
-    <div>
-      부동산 종류
-      <div>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item">
+          테스트
+        </a>
+
+        <a class="navbar-item">
+          Documentation
+        </a>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More
+          </a>
+
+          <div class="navbar-dropdown">
+            <a class="navbar-item">
+              About AirBnB Aid
+            </a>
+            <a class="navbar-item">
+              Contact
+            </a>
+            <hr class="navbar-divider">
+            <a class="navbar-item">
+              Report an issue
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="navbar-end">
+        <!-- <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-primary">
+            <strong>Sign up</strong>
+          </a>
+          <a class="button is-light">
+            Log in
+          </a>
+        </div>
+      </div> -->
+      </div>
+    </div>
+  </nav>
+
+  <section class="section">
+    <h1 class="title">합법적으로 에어비앤비를 운영할 수 있는지 바로 확인해보세요!</h1>
+    <h2 class="subtitle">
+      아래 테스트를 진행한 후 맨 하단의 <strong>[결과확인]</strong> 버튼을 클릭하시면 바로 결과를 확인할 수 있습니다.
+    </h2>
+  </section>
+
+  <div class="container">
+    <div class="question_box">
+      <h2 class="option_title">공유할 부동산의 종류를 선택하세요.</h2>
+      <div class="option_group">
         <div class="option_box">
-          <label for="한옥"></label>
+          <label for="한옥"><img src="images/house_sample.jpg" class="option_img" alt="house_img"></label>
           <div class="option_radio">
             <input type="radio" id="한옥" name="houseType" value="한옥" checked>
             <label for="한옥">한옥</label>
           </div>
         </div>
         <div class="option_box">
-          <label for="단독주택"></label>
+          <label for="단독주택"><img src="images/house_sample.jpg" class="option_img" alt="house_img"></label>
           <div class="option_radio">
             <input type="radio" id="단독주택" name="houseType" value="단독주택">
             <label for="단독주택">단독주택/다가구주택</label>
           </div>
         </div>
         <div class="option_box">
-          <label for="공동주택"></label>
+          <label for="공동주택"><img src="images/house_sample.jpg" class="option_img" alt="house_img"></label>
           <div class="option_radio">
             <input type="radio" id="공동주택" name="houseType" value="공동주택">
             <label for="공동주택">연립주택/다세대주택/아파트</label>
@@ -132,42 +190,82 @@
         </div>
       </div>
     </div>
-    <div>
-      부동산 위치
-      <div class="type_location">
-        <input type="radio" id="농어촌" name="locationType" value="농어촌" checked>
-        <label for="농어촌">(준)농어촌지역</label> <br>
 
-        <input type="radio" id="서울" name="locationType" value="서울">
-        <label for="서울">서울(지하철 1~9호선 1km이내)</label> <br>
+    <div class="question_box">
+      <h2 class="option_title">공유할 부동산의 위치를 선택하세요.</h2>
+      <div class="option_group">
+        <div class="option_box">
+          <label for="농어촌"><img src="images/house_sample.jpg" class="option_img" alt="house_img"></label>
+          <div class="option_radio">
+            <input type="radio" id="농어촌" name="locationType" value="농어촌" checked>
+            <label for="농어촌">(준)농어촌지역</label>
+          </div>
+        </div>
 
-        <input type="radio" id="도시" name="locationType" value="도시">
-        <label for="도시">그 외 도시</label>
+        <div class="option_box">
+          <label for="서울"><img src="images/house_sample.jpg" class="option_img" alt="house_img"></label>
+          <div class="option_radio">
+            <input type="radio" id="서울" name="locationType" value="서울">
+            <label for="서울">서울(지하철 1~9호선 1km이내)</label>
+          </div>
+        </div>
+
+        <div class="option_box">
+          <label for="도시"><img src="images/house_sample.jpg" class="option_img" alt="house_img"></label>
+          <div class="option_radio">
+            <input type="radio" id="도시" name="locationType" value="도시">
+            <label for="도시">그 외 도시</label>
+          </div>
+        </div>
       </div>
     </div>
-    <div>
-      호스트
-      <div id="type_host">
-        <input type="radio" id="전입" name="hostType" value="전입" checked>
-        <label for="전입">전입</label> <br>
 
-        <input type="radio" id="미전입" name="hostType" value="미전입">
-        <label for="미전입">미전입</label>
+    <div class="question_box">
+      <h2 class="option_title">호스트의 전입 여부를 선택하세요.</h2>
+      <div class="option_group">
+
+        <div class="option_box">
+          <label for="전입"><img src="images/house_sample.jpg" class="option_img" alt="house_img"></label>
+          <div class="option_radio">
+            <input type="radio" id="전입" name="hostType" value="전입" checked>
+            <label for="전입">전입</label>
+          </div>
+        </div>
+
+        <div class="option_box">
+          <label for="미전입"><img src="images/house_sample.jpg" class="option_img" alt="house_img"></label>
+          <div class="option_radio">
+            <input type="radio" id="미전입" name="hostType" value="미전입" checked>
+            <label for="미전입">미전입</label>
+          </div>
+        </div>
       </div>
     </div>
-    <div>
-      게스트
-      <div class="type_guest">
-        <input type="radio" id="내/외국인" name="guestType" value="내/외국인" checked>
-        <label for="내/외국인">내/외국인</label> <br>
 
-        <input type="radio" id="외국인" name="guestType" value="외국인">
-        <label for="외국인">외국인</label>
+    <div class="question_box">
+      <h2 class="option_title">손님으로 맞이할 게스트의 내/외국인 여부를 선택하세요.</h2>
+      <div class="option_group">
+
+        <div class="option_box">
+          <label for="내/외국인"><img src="images/house_sample.jpg" class="option_img" alt="house_img"></label>
+          <div class="option_radio">
+            <input type="radio" id="내/외국인" name="guestType" value="내/외국인" checked>
+            <label for="내/외국인">내/외국인</label>
+          </div>
+        </div>
+
+        <div class="option_box">
+          <label for="외국인"><img src="images/house_sample.jpg" class="option_img" alt="house_img"></label>
+          <div class="option_radio">
+            <input type="radio" id="외국인" name="guestType" value="외국인">
+            <label for="외국인">외국인</label>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="result_button">
+  <div id="result_button">
     <!--버튼의 파라미터로 선택한 체크박스들 값이 들어가고, 해당 파라미터를 조건으로 서버에서 조건 판단하여 결과 리턴하면 됨-->
     <button onclick="showResult()" type="button" class="btn btn-primary"> 결과 확인</button>
   </div>
@@ -175,6 +273,7 @@
   <div id="result_box">
 
   </div>
+
 
 </body>
 
