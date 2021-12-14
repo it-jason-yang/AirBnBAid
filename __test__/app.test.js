@@ -7,34 +7,40 @@ const app = require('../app.js');
 const { sequelize } = require('../models');
 
 describe('legalCheck API', () => {
-    beforeAll( () => {
-        sequelize
-        .sync({ force: false })
-        .then(() => {
-          console.log('------ TEST SQL Restructure Complete ------');
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    beforeAll(async () => {
+        await sequelize
+            .sync({ force: false })
+            .then(() => {
+                console.log('------ TEST SQL Restructure Complete ------');
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     });
-    afterAll( () => {
-        sequelize
-        .close()
-        .then(() => {
-            console.log('------ TEST SQL Destructure Complete ------');
-          })
+    afterAll(async () => {
+        await sequelize
+            .close()
+            .then(() => {
+                console.log('------ TEST SQL Destructure Complete ------');
+            })
     });
     it('POST /legalCheck --> results', async () => {
         return await request(app)
             .post('/legalCheck')
-            .send({"resultType" : "1"})
+            .send({ "checkVal": "1101" })
             .expect(200)
             .expect('Content-Type', /json/)
             .then((response) => {
                 expect(response.body).toEqual(expect.arrayContaining([
                     expect.objectContaining({
                         title: expect.any(String),
-                        description: expect.any(String)
+                        resultType: expect.any(String),
+                        law: expect.any(String),
+                        host: expect.any(String),
+                        guest: expect.any(String),
+                        info: expect.any(String),
+                        houseLocation: expect.any(String),
+                        houseType: expect.any(String),
                     })
                 ]))
             })

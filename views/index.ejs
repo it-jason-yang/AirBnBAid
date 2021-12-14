@@ -1,32 +1,15 @@
 <!DOCTYPE html>
 <html>
 
+
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
 <head>
-  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-    crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 
-  <head>
-    <title>
-      <%= title %>
-    </title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-
-<body>
   <script>
-
-    //문자열 분리 함수 - 특정 컬럼데이터 내 여러 항목이 특정 구분자를 기준으로 입력되어있는 경우 활용하여 분리
-    function splitString(stringToSplit, separator) {
-      let arrayOfStrings = stringToSplit.split(separator);
-      return arrayOfStrings
-    }
-    let slash = '/';
-
-    // 1. 테스트 입력항목 value를 test_input 객체에 추가
-    let gatherChecked = {}
-
     //라디오버튼 하나씩 돌면서 체크된 순서의 인덱스를 받는다.
     //순서대로 받고, 그 인덱스의 조합으로 resultType을 요청한다.
     const findChecked = (askType) => {
@@ -38,14 +21,20 @@
       }
     }
 
-    function getChecked() {
-
+    const getChecked = () => {
       let checkVal = findChecked('houseType') + findChecked('locationType') + findChecked('hostType') + findChecked('guestType')
       return { checkVal }
     }
 
-    // 2. 1번 단계에서 수집한 값을 기준으로 서버에서 조건에 따라 db에 저장된 결과 전달
-    function showResult() {
+    const convertHtml = (value) => {
+      if (typeof value == "string" && value.includes('/')) {
+        value = '<li>' + value.replaceAll('/', '</li><li>') + '</li>'
+        return value;
+      }
+      return value;
+    }
+
+    const showResult = () => {
       let checkVal = getChecked()
 
       $('#result_box').empty();  //결과확인 여러번 클릭 시 중복으로 찍히지 않도록
@@ -62,87 +51,43 @@
             icon: "success",
             button: "결과보기",
           });
-          console.log(response);
 
           let results = response
+
           for (let i in results) {
-            let {title, law, houseType, houseLocation, guest, host, info} = results[i]
-
-            //그냥 문자열로 받고.. 문자열을 수정하는게 훨씬 효율적이겠다..
-
-            if (guest.includes('/')) {
-                guest = '<li>' + guest.replaceAll('/','</li><li>') + '</li>'
+            for (let [key, value] of Object.entries(results[i])) {
+              results[i][key] = convertHtml(value);
             }
 
-            //let resultList = [title, law, houseType, houseLocation, guest, host, info]
-
-            // splited_resultList = resultList.map( value => {
-            //   if (value.includes('/')) {
-            //     return splitString(value, '/')
-            //   }
-            //   return value
-            // })
-
-            // console.log(splited_resultList)
-
-            // console.log(splited_resultList[4][0])
-            // console.log(typeof splited_resultList)
-            // console.log(typeof splited_resultList[3])
-            // console.log(typeof splited_resultList[4])
-
-            // test_array = splited_resultList.map( value => {
-            //   if (typeof value == 'object') {
-            //     newVal = value.map( value => {
-            //       return value = '<li>' + value + '<li>'
-            //     })
-            //     return newVal
-            //   }
-            //   return value
-            // })
-            // console.log('으아아앙')
-            // console.log(test_array)
-
-            // //!!! 문자열 분리함수를 탄 경우에만 활용 -> 그렇다면 하나로 합치는 건 어떨지?
-            // //쪼갠 des 들을 for문 돌면서 li로 구분해서 만들고, 해당 값들을 temp_html에 박는다.
-            // function makeList (array) {
-            //   let tempDesList = '';
-            //   for (const value of array) {
-            //     tempDesList = tempDesList + '<li>' + value + '</li>'
-            //   }
-            //   return tempDesList;
-            // }
-
-            // final_resultList = makeList(splited_resultList);
+            let { title, law, houseType, houseLocation, guest, host, info } = results[i]
 
             let temp_html = `<div class = 'result'>
-                                            <tr>
-                                                <td><h3>${title}</h3></td>
-                                                <td><h3>${law}</h3></td>
-                                                <td><h3>${houseType}</h3></td>
-                                                <td><h3>${houseLocation}</h3></td>
-                                                <td><h3>${guest}</h3></td>
-                                                <td><h3>${host}</h3></td>
-                                                <td><h3>${info}</h3></td>
-                                            </tr>
-                                        </div>`
+                                              <tr>
+                                                  <td><h3>${title}</h3></td>
+                                                  <td><h3>${law}</h3></td>
+                                                  <td><h3>${houseType}</h3></td>
+                                                  <td><h3>${houseLocation}</h3></td>
+                                                  <td><h3>${guest}</h3></td>
+                                                  <td><h3>${host}</h3></td>
+                                                  <td><h3>${info}</h3></td>
+                                              </tr>
+                                          </div>`
             $('#result_box').append(temp_html)
           }
-          // for (let i = 0; i < results.length; i++) {
-          //   let title = results[i]['result_title']
-          //   let des = results[i]['result_des']
-          //   let temp_html = `<div class = 'result'>
-          //                                   <tr>
-          //                                       <td><h3>${title}</h3></td>
-          //                                       <td>${des}</td>
-          //                                   </tr>
-          //                               </div>`
-          //   $('#result_box').append(temp_html)
-          // }
         }
       });
     }
 
+    module.exports = { findChecked, getChecked, convertHtml, showResult }
   </script>
+
+  <title>
+    <%= title %>
+  </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
 
   <style>
     div {
