@@ -47,6 +47,7 @@ a {
 
 .option_img{
   width: 300px;
+  border-radius: 30px;
 }
 
 .option_radio{

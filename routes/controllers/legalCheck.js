@@ -23,17 +23,6 @@ const callCntUp = async (resultType) => {
     }
 }
 
-const repeatConditionFn = (condition, targetVariable, ...datas) => {
-    if (condition == 'or') {
-        
-    }
-    let temp = 'space'
-    for (const data of datas) {
-
-        temp += '|| data' 
-    }
-}
-
 //테스트 체크 결과를 받아서 해당하는 resultType Array를 리턴하는 함수
 //1:외국인관광 도시민박업, 2:농어촌민박업, 3:한옥체험업, 4:공유숙박업
 const calcResultType = (checkVal) => {
