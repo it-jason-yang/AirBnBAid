@@ -112,6 +112,33 @@
         }
       });
     }
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+// Get all "navbar-burger" elements
+const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+// Check if there are any navbar burgers
+if ($navbarBurgers.length > 0) {
+
+  // Add a click event on each of them
+  $navbarBurgers.forEach( el => {
+    el.addEventListener('click', () => {
+
+      // Get the target from the "data-target" attribute
+      const target = el.dataset.target;
+      const $target = document.getElementById(target);
+
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      el.classList.toggle('is-active');
+      $target.classList.toggle('is-active');
+
+    });
+  });
+}
+
+});
   </script>
 
   <title>
@@ -155,14 +182,14 @@
           </a>
 
           <div class="navbar-dropdown">
-            <a class="navbar-item">
+            <a class="navbar-item" href="/about">
               About AirBnB Aid
             </a>
-            <a class="navbar-item">
+            <a class="navbar-item" href="/contact">
               Contact
             </a>
             <hr class="navbar-divider">
-            <a class="navbar-item">
+            <a class="navbar-item" href="/report">
               Report an issue
             </a>
           </div>
@@ -184,7 +211,7 @@
     </div>
   </nav>
 
-  <section class="section"  id="top_title">
+  <section class="section" id="top_title">
     <h1 class="title">합법적으로 에어비앤비를 운영할 수 있는지 바로 확인해보세요!</h1>
     <h2 class="subtitle">
       아래 테스트를 진행한 후 맨 하단의 <strong>[결과확인]</strong> 버튼을 클릭하시면 바로 결과를 확인할 수 있습니다.
@@ -423,16 +450,17 @@
 
 
   <div class="container" id="result_box">
-    
+
   </div>
 
   <footer class="footer">
     <div class="content has-text-centered">
-      <p>
-        <strong>AirBnB Aid</strong> by <a href="https://aboutcoding.tistory.com/">It-Jason-Yang</a>.
-      </p>
+        <p>
+            <strong>AirBnB Aid</strong> by <a href="https://aboutcoding.tistory.com/">It-Jason-Yang</a>.<br>
+            <b>Email :</b> joohyuk.yang00@gmail.com
+        </p>
     </div>
-  </footer>
+</footer>
 
 </body>
 

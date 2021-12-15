@@ -108,3 +108,10 @@ a {
 .result_table td:nth-child(even){
   width: auto;
 }
+
+
+/* ----- */
+
+.card-about{
+  margin-top: 50px;
+}
