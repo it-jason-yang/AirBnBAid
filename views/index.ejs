@@ -10,6 +10,7 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 
+
 <head>
   <meta charset="UTF-8">
   <meta property="og:title" content="방문을 환영합니다 | AirBnBAid" />
@@ -116,29 +117,29 @@
 
     document.addEventListener('DOMContentLoaded', () => {
 
-// Get all "navbar-burger" elements
-const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+      // Get all "navbar-burger" elements
+      const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
-// Check if there are any navbar burgers
-if ($navbarBurgers.length > 0) {
+      // Check if there are any navbar burgers
+      if ($navbarBurgers.length > 0) {
 
-  // Add a click event on each of them
-  $navbarBurgers.forEach( el => {
-    el.addEventListener('click', () => {
+        // Add a click event on each of them
+        $navbarBurgers.forEach(el => {
+          el.addEventListener('click', () => {
 
-      // Get the target from the "data-target" attribute
-      const target = el.dataset.target;
-      const $target = document.getElementById(target);
+            // Get the target from the "data-target" attribute
+            const target = el.dataset.target;
+            const $target = document.getElementById(target);
 
-      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-      el.classList.toggle('is-active');
-      $target.classList.toggle('is-active');
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            el.classList.toggle('is-active');
+            $target.classList.toggle('is-active');
+
+          });
+        });
+      }
 
     });
-  });
-}
-
-});
   </script>
 
   <title>
@@ -156,7 +157,7 @@ if ($navbarBurgers.length > 0) {
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="/">
-        <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+        <img src="images/logo.png" width="112" height="28">
       </a>
 
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -172,28 +173,16 @@ if ($navbarBurgers.length > 0) {
           테스트
         </a>
 
-        <a class="navbar-item">
-          Documentation
+        <a class="navbar-item" href="/about">
+          About AirBnB Aid
         </a>
-
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            More
-          </a>
-
-          <div class="navbar-dropdown">
-            <a class="navbar-item" href="/about">
-              About AirBnB Aid
-            </a>
-            <a class="navbar-item" href="/contact">
-              Contact
-            </a>
-            <hr class="navbar-divider">
-            <a class="navbar-item" href="/report">
-              Report an issue
-            </a>
-          </div>
-        </div>
+        <a class="navbar-item" href="/contact">
+          Contact
+        </a>
+        <hr class="navbar-divider">
+        <a class="navbar-item" href="/report">
+          Report an issue
+        </a>
       </div>
 
       <div class="navbar-end">
@@ -455,12 +444,12 @@ if ($navbarBurgers.length > 0) {
 
   <footer class="footer">
     <div class="content has-text-centered">
-        <p>
-            <strong>AirBnB Aid</strong> by <a href="https://aboutcoding.tistory.com/">It-Jason-Yang</a>.<br>
-            <b>Email :</b> joohyuk.yang00@gmail.com
-        </p>
+      <p>
+        <strong>AirBnB Aid</strong> by <a href="https://aboutcoding.tistory.com/">It-Jason-Yang</a>.<br>
+        <b>Email :</b> joohyuk.yang00@gmail.com
+      </p>
     </div>
-</footer>
+  </footer>
 
 </body>
 

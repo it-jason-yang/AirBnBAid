@@ -110,8 +110,23 @@ a {
 }
 
 
-/* ----- */
+/* --about page-- */
 
 .card-about{
   margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
+/* report page */
+
+.field-report{
+  width:  50%;
+  margin: 5px auto;
+}
+
+#report_button{
+  margin: 30px;
+  text-align: center;
 }

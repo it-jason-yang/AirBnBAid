@@ -11,6 +11,9 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 
+<!-- font-awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
 <head>
     <meta charset="UTF-8">
     <meta property="og:title" content="방문을 환영합니다 | AirBnBAid" />
@@ -36,7 +39,7 @@
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
-                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+                <img src="images/logo.png" width="112" height="28">
             </a>
 
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
@@ -50,32 +53,20 @@
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
                 <a class="navbar-item" href="/">
-                    테스트
+                  테스트
                 </a>
-
-                <a class="navbar-item">
-                    Documentation
+        
+                <a class="navbar-item" href="/about">
+                  About AirBnB Aid
                 </a>
-
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        More
-                    </a>
-
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item" href="/about">
-                            About AirBnB Aid
-                        </a>
-                        <a class="navbar-item" href="/contact">
-                            Contact
-                        </a>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item" href="/report">
-                            Report an issue
-                        </a>
-                    </div>
-                </div>
-            </div>
+                <a class="navbar-item" href="/contact">
+                  Contact
+                </a>
+                <hr class="navbar-divider">
+                <a class="navbar-item" href="/report">
+                  Report an issue
+                </a>
+              </div>
 
             <div class="navbar-end">
                 <!-- <div class="navbar-item">
@@ -93,11 +84,48 @@
     </nav>
 
     <section class="section" id="top_title">
-        <h1 class="title"></h1>
+        <h1 class="title">
+            테스트 및 서비스 관련하여 리포트를 남겨주시면 조치하겠습니다.
+        </h1><br>
         <h2 class="subtitle">
-            아래 테스트를 진행한 후 맨 하단의 <strong>[결과확인]</strong> 버튼을 클릭하시면 바로 결과를 확인할 수 있습니다.
+            아래 메세지 박스에 문제내용을 기재한 후 접수부탁드립니다.
         </h2>
     </section>
+
+    <div class="field field-report">
+        <div class="select">
+            <select>
+                <option>기능 개선 관련</option>
+                <option>기능/정보 오류 관련</option>
+                <option>기타</option>
+            </select>
+        </div>
+
+        <div class="file has-name">
+            <label class="file-label">
+              <input class="file-input" type="file" name="resume">
+              <span class="file-cta">
+                <span class="file-icon">
+                  <i class="fas fa-upload"></i>
+                </span>
+                <span class="file-label">
+                  파일 업로드
+                </span>
+              </span>
+              <span class="file-name">
+                이미지파일만 첨부할 수 있습니다.
+              </span>
+            </label>
+          </div>
+          
+        <div class="control">
+            <textarea class="textarea" placeholder="내용을 입력해주세요."></textarea>
+        </div>
+    </div>
+    <div id="report_button">
+        <!--버튼의 파라미터로 선택한 체크박스들 값이 들어가고, 해당 파라미터를 조건으로 서버에서 조건 판단하여 결과 리턴하면 됨-->
+        <button onclick="submitReport()" type="button" class="btn btn-primary">리포트 접수</button>
+    </div>
 
 
     <div class="container" id="result_box">

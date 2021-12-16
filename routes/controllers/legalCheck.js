@@ -70,7 +70,7 @@ const calcResultType = (checkVal) => {
 
 //테스트 결과를 리턴하는 메인 함수
 const getLegalResult = async (req, res, next) => {
-
+    
     const { checkVal } = req.body;
     console.log(checkVal)
     const resultType = calcResultType(checkVal)

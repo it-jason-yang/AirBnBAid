@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
 const { sequelize } = require("./models");
+let env = require('dotenv').config()
+
 
 var indexRouter = require('./routes/index');
 var legalCheckRouter = require('./routes/legalCheck');
@@ -18,6 +20,16 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+if (env.NODE_ENV === 'production') {
+  app.use(
+    helmet({
+      contentSecurityPolicy: false,
+      hsts: false,
+    })
+  );
+  app.use(hpp());
+}
 
 app.use(logger('dev'));
 app.use(express.json());
