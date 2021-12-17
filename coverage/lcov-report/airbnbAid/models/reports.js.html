@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for airbnbAid/models/LegalTestResults.js</title>
+    <title>Code coverage report for airbnbAid/models/reports.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">airbnbAid/models</a> LegalTestResults.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">airbnbAid/models</a> reports.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -87,16 +87,7 @@
 <a name='L22'></a><a href='#L22'>22</a>
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L25'></a><a href='#L25'>25</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
@@ -112,15 +103,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -134,7 +116,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) =&gt; {
-  class LegalTestResults extends Model {
+  class Reports extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -144,24 +126,15 @@ module.exports = (sequelize, DataTypes) =&gt; {
       // define association here
     }
   };
-  LegalTestResults.init({
-    resultType: DataTypes.STRING,
-    title: DataTypes.STRING,
-    law: DataTypes.STRING,
-    houseType: DataTypes.STRING,
-    houseLocation: DataTypes.STRING,
-    guest: DataTypes.STRING,
-    host: DataTypes.STRING,
-    info: DataTypes.STRING,
-    callCnt: {
-            type: DataTypes.INTEGER,
-            defaultValue: 0,
-          }
+  Reports.init({
+    category: DataTypes.STRING,
+    img: DataTypes.STRING,
+    content: DataTypes.STRING,
   }, {
     sequelize,
-    modelName: 'LegalTestResults',
+    modelName: 'Reports',
   });
-  return LegalTestResults;
+  return Reports;
 };</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

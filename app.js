@@ -40,7 +40,7 @@ app.use('/', indexRouter);
 app.use('/legalCheck', legalCheckRouter);
 
 sequelize
-  .sync({ force: true })
+  .sync({ force: false })
   .then(() => {
     console.log('------ SQL Restructure Complete ------');
   })
