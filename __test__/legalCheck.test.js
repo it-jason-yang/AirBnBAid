@@ -9,9 +9,9 @@ describe('legalCheck callCntUp Test', () => {
         await expect(callCntUp()).rejects.toThrow('callCntUp Error');
     });
 
-    it('callCntUp 함수 호출 시 resultId 파라미터가 있고 정상 처리되면, resolves --> true', async () => {
-        await expect(callCntUp(1)).resolves.toBe(true);
-    });
+    // it('callCntUp 함수 호출 시 resultId 파라미터가 있고 정상 처리되면, resolves --> true', async () => {
+    //     await expect(callCntUp(1)).resolves.toBe(true);
+    // });
 });
 
 describe('legalCheck calcResultType Test', () => {
