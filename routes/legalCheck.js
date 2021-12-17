@@ -1,8 +1,7 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 let legalCtrl = require('./controllers/legalcheck');
-
 let getLegalResult = legalCtrl.getLegalResult
 
 /* GET users listing. */
@@ -10,6 +9,10 @@ let getLegalResult = legalCtrl.getLegalResult
 //   res.send('respond with a resource');
 // });
 
+router.get('/', function(req, res, next) {
+    res.render('index', { title: 'AirBnB Aid' });
+  });
+  
 router.post('/', getLegalResult);
 
 module.exports = router;

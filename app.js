@@ -1,17 +1,16 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const logger = require('morgan');
 const { sequelize } = require("./models");
-let env = require('dotenv').config()
+const env = require('dotenv').config()
 
+const indexRouter = require('./routes/index');
+const legalCheckRouter = require('./routes/legalCheck');
 
-var indexRouter = require('./routes/index');
-var legalCheckRouter = require('./routes/legalCheck');
-
-var app = express();
+const app = express();
 
 // json/ utf-8 관련한 에러가 나오면.. 한번 주석풀고 테스트해보자.
 // app.use(bodyParser.json());
@@ -41,7 +40,7 @@ app.use('/', indexRouter);
 app.use('/legalCheck', legalCheckRouter);
 
 sequelize
-  .sync({ force: false })
+  .sync({ force: true })
   .then(() => {
     console.log('------ SQL Restructure Complete ------');
   })
