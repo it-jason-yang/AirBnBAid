@@ -10,8 +10,6 @@ router.get('/contact', function(req, res, next) {
   res.render('contact', { title: 'AirBnB Aid - Contact' });
 });
 
-
-
 const legalCheckRouter = require('./legalCheck');
 const reportRouter = require('./report');
 
