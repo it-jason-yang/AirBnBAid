@@ -36,8 +36,8 @@
     }
 
     const convertHtml = (value) => {
-      if (typeof value == "string" && value.includes('/')) {
-        value = '<li>' + value.replaceAll('/', '</li><li>') + '</li>'
+      if (typeof value == "string" && value.includes('|')) {
+        value = '<li>' + value.replaceAll('|', '</li><li>') + '</li>'
         return value;
       }
       return value;

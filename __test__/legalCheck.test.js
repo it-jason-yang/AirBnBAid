@@ -5,6 +5,24 @@ const {
 } = require('../routes/controllers/legalCheck');
 
 describe('legalCheck callCntUp Test', () => {
+    beforeAll(async () => {
+        await sequelize
+            .sync({ force: false })
+            .then(() => {
+                console.log('------ TEST SQL Restructure Complete ------');
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    });
+    afterAll(async () => {
+        await sequelize
+            .close()
+            .then(() => {
+                console.log('------ TEST SQL Destructure Complete ------');
+            })
+    });
+    
     it('callCntUp 함수 호출 시 resultId 파라미터가 없다면, rejects --> callCntUp Error가 발생한다.', async () => {
         await expect(callCntUp()).rejects.toThrow('callCntUp Error');
     });
