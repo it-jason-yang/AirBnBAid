@@ -21,7 +21,11 @@
     <meta property="og:image" content="{{ url_for('images', filename='og_abba.png') }}" />
 
     <script>
-
+      const fileChk = (input) => {
+        let file = input.files[0];
+        let name = document.getElementById('img-name');
+        name.textContent = file.name;
+      }
     </script>
 
     <title>
@@ -31,11 +35,6 @@
 </head>
 
 <body>
-
-    <style>
-
-    </style>
-
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
@@ -101,16 +100,16 @@
 
       <div class="file has-name">
           <label class="file-label">
-            <input class="file-input" type="file" name="image-upload">
+            <input class="file-input" type="file" accept="image/*" onchange="fileChk(this)" name="image-upload">
             <span class="file-cta">
               <span class="file-icon">
                 <i class="fas fa-upload"></i>
               </span>
               <span class="file-label">
-                파일 업로드
+                이미지 업로드
               </span>
             </span>
-            <span class="file-name">
+            <span class="file-name" id="img-name">
               이미지파일만 첨부할 수 있습니다.
             </span>
           </label>
@@ -124,9 +123,7 @@
       </div>
     </form>
 
-
     <div class="container" id="result_box">
-
     </div>
 
     <footer class="footer">
