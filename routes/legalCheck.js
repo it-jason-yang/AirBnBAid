@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-let legalCtrl = require('./controllers/legalcheck');
+let legalCtrl = require('./controllers/legalCheck');
 let getLegalResult = legalCtrl.getLegalResult
 
 /* GET users listing. */

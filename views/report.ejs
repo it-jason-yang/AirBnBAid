@@ -21,7 +21,11 @@
     <meta property="og:image" content="{{ url_for('images', filename='og_abba.png') }}" />
 
     <script>
-
+      const fileChk = (input) => {
+        let file = input.files[0];
+        let name = document.getElementById('img-name');
+        name.textContent = file.name;
+      }
     </script>
 
     <title>
@@ -31,11 +35,6 @@
 </head>
 
 <body>
-
-    <style>
-
-    </style>
-
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
@@ -53,13 +52,10 @@
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
                 <a class="navbar-item" href="/">
-                  테스트
+                  TEST
                 </a>
                 <a class="navbar-item" href="/about">
                   About AirBnB Aid
-                </a>
-                <a class="navbar-item" href="/contact">
-                  Contact
                 </a>
                 <hr class="navbar-divider">
                 <a class="navbar-item" href="/report">
@@ -101,16 +97,16 @@
 
       <div class="file has-name">
           <label class="file-label">
-            <input class="file-input" type="file" name="image-upload">
+            <input class="file-input" type="file" accept="image/*" onchange="fileChk(this)" name="image-upload">
             <span class="file-cta">
               <span class="file-icon">
                 <i class="fas fa-upload"></i>
               </span>
               <span class="file-label">
-                파일 업로드
+                이미지 업로드
               </span>
             </span>
-            <span class="file-name">
+            <span class="file-name" id="img-name">
               이미지파일만 첨부할 수 있습니다.
             </span>
           </label>
@@ -119,20 +115,18 @@
       <div class="control">
           <textarea name="content" class="textarea" placeholder="내용을 입력해주세요."></textarea>
       </div>
-      <div>
-        <button type="submit" class="btn btn-primary" id="report_button">리포트 접수</button>
+      <div id="report_footer">
+        <button type="submit" onclick="alert('접수되었습니다.')" class="btn btn-primary" id="report_button">리포트 접수</button>
       </div>
     </form>
 
-
     <div class="container" id="result_box">
-
     </div>
 
     <footer class="footer">
         <div class="content has-text-centered">
             <p>
-                <strong>AirBnB Aid</strong> by <a href="https://aboutcoding.tistory.com/">It-Jason-Yang</a>.<br>
+                <strong>AirBnB Aid</strong> by <a href="https://aboutcoding.tistory.com/entry/Green-Aid-%EB%B6%80%EA%B0%80%EC%88%98%EC%9E%85%EC%9D%84-%EC%95%88%EC%A0%84%ED%95%98%EA%B2%8C-%EB%A7%8C%EB%93%A4-%EC%88%98-%EC%9E%88%EB%8F%84%EB%A1%9D-%EB%8F%95%EC%8A%B5%EB%8B%88%EB%8B%A4">It-Jason-Yang</a>.<br>
                 <b>Email :</b> joohyuk.yang00@gmail.com
             </p>
         </div>

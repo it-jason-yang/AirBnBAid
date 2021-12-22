@@ -36,6 +36,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use('/', indexRouter);
 app.use('/legalCheck', legalCheckRouter);
 
@@ -47,7 +48,6 @@ sequelize
   .catch((error) => {
     console.log(error);
   });
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
