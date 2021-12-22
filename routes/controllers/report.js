@@ -5,7 +5,10 @@ const Op = Sequelize.Op;
 
 const reportSubmit = async (req, res, next) => {
     try {
-        const originalUrl = req.file.location
+        let originalUrl = ''
+        if (req.file) {
+            originalUrl = req.file.location
+        }
         const {category} = req.body
         const {content} = req.body
         
@@ -15,7 +18,7 @@ const reportSubmit = async (req, res, next) => {
             img: originalUrl,
           });
           
-        res.status(200).send(reports);
+        res.status(200).render('index', { title: 'AirBnB Aid' }).send({msg :'정상적으로 접수되었습니다.'});
 
     } catch (error) {
         console.log(error);

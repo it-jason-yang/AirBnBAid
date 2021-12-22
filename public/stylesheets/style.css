@@ -72,12 +72,6 @@ a {
   border-radius: 15px;
 }
 
-/* #result_box .content:nth-child(odd){
-  margin-bottom: red solid 2px;
-  margin: 100px;
-  color: #00B7FF;
-} */
-
 .content{
   padding: 20px;
 }
@@ -126,7 +120,10 @@ a {
   margin: 5px auto;
 }
 
-#report_button{
-  margin: 30px;
+#report_footer{
   text-align: center;
+}
+
+#report_button{
+  margin: 30px 0px;
 }
