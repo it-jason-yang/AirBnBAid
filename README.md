@@ -11,8 +11,7 @@ AirBnB를 통해 간단하게 주거공간을 공유하는 사람들이 많습�
 |Name|Tech|
 |---|---|
 |Server|<img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=Node.js&logoColor=white"/> <img src="https://img.shields.io/badge/Express-000000?style=flat-square&logo=Express&logoColor=white"/>|
-|Language|<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=white"/>
-<img src="https://img.shields.io/badge/HTML white"/><img src="https://img.shields.io/badge/CSS green"/>|
+|Language|<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=white"/><img src="https://img.shields.io/badge/-%20html-green"/><img src="https://img.shields.io/badge/-%20css-white"/>|
 |Database|<img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white"/>|
 |Load Balancer|<img src="https://img.shields.io/badge/AWS ALB-FF9900?style=flat-square"/>|
 |Test|<img src="https://img.shields.io/badge/Jest-C21325?style=flat-square&logo=Jest&logoColor=white"/>|
