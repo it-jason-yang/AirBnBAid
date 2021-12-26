@@ -2,68 +2,103 @@
 <html lang="ko">
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script>
+  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-    crossorigin="anonymous"></script>
+  crossorigin="anonymous"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 
 <!-- font-awesome -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+  integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 
 <head>
-    <meta charset="UTF-8">
-    <meta property="og:title" content="방문을 환영합니다 | AirBnBAid" />
-    <meta property="og:description" content="임대 또는 소유하고있는 집을 공유하고 싶다면 합법적으로 운영할 수 있는지 체크해보세요!" />
-    <meta property="og:image" content="{{ url_for('images', filename='og_abba.png') }}" />
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-85FX2TLV3B"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-    <script>
-      const fileChk = (input) => {
-        let file = input.files[0];
-        let name = document.getElementById('img-name');
-        name.textContent = file.name;
+    gtag('config', 'G-85FX2TLV3B');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta property="og:title" content="방문을 환영합니다 | AirBnBAid" />
+  <meta property="og:description" content="임대 또는 소유하고있는 집을 공유하고 싶다면 합법적으로 운영할 수 있는지 체크해보세요!" />
+  <meta property="og:image" content="{{ url_for('images', filename='og_abba.png') }}" />
+
+  <script>
+    const fileChk = (input) => {
+      let file = input.files[0];
+      let name = document.getElementById('img-name');
+      name.textContent = file.name;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // Get all "navbar-burger" elements
+      const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+      // Check if there are any navbar burgers
+      if ($navbarBurgers.length > 0) {
+
+        // Add a click event on each of them
+        $navbarBurgers.forEach(el => {
+          el.addEventListener('click', () => {
+
+            // Get the target from the "data-target" attribute
+            const target = el.dataset.target;
+            const $target = document.getElementById(target);
+
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            el.classList.toggle('is-active');
+            $target.classList.toggle('is-active');
+
+          });
+        });
       }
-    </script>
 
-    <title>
-        <%= title %>
-    </title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    });
+  </script>
+
+  <title>
+    <%= title %>
+  </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 
 <body>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="/">
-                <img src="images/logo.png" width="112" height="28">
-            </a>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="images/logo.png" width="112" height="28">
+      </a>
 
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
-                data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-        </div>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
 
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-                <a class="navbar-item" href="/">
-                  TEST
-                </a>
-                <a class="navbar-item" href="/about">
-                  About AirBnB Aid
-                </a>
-                <hr class="navbar-divider">
-                <a class="navbar-item" href="/report">
-                  Report an issue
-                </a>
-              </div>
-            <div class="navbar-end">
-                <!-- <div class="navbar-item">
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/">
+          TEST
+        </a>
+        <a class="navbar-item" href="/about">
+          About AirBnB Aid
+        </a>
+        <hr class="navbar-divider">
+        <a class="navbar-item" href="/report">
+          Report an issue
+        </a>
+      </div>
+      <div class="navbar-end">
+        <!-- <div class="navbar-item">
         <div class="buttons">
           <a class="button is-primary">
             <strong>Sign up</strong>
@@ -73,64 +108,66 @@
           </a>
         </div>
       </div> -->
-            </div>
-        </div>
-    </nav>
-
-    <section class="section" id="top_title">
-        <h1 class="title">
-            테스트 및 서비스 관련하여 리포트를 남겨주시면 조치하겠습니다.
-        </h1><br>
-        <h2 class="subtitle">
-            아래 메세지 박스에 문제내용을 기재한 후 접수부탁드립니다.
-        </h2>
-    </section>
-
-    <form action="/report" method="post" enctype="multipart/form-data" class="field field-report">
-      <div class="select">
-          <select name="category">
-              <option>기능 개선 관련</option>
-              <option>기능/정보 오류 관련</option>
-              <option>기타</option>
-          </select>
       </div>
+    </div>
+  </nav>
 
-      <div class="file has-name">
-          <label class="file-label">
-            <input class="file-input" type="file" accept="image/*" onchange="fileChk(this)" name="image-upload">
-            <span class="file-cta">
-              <span class="file-icon">
-                <i class="fas fa-upload"></i>
-              </span>
-              <span class="file-label">
-                이미지 업로드
-              </span>
-            </span>
-            <span class="file-name" id="img-name">
-              이미지파일만 첨부할 수 있습니다.
-            </span>
-          </label>
-        </div>
-        
-      <div class="control">
-          <textarea name="content" class="textarea" placeholder="내용을 입력해주세요."></textarea>
-      </div>
-      <div id="report_footer">
-        <button type="submit" onclick="alert('접수되었습니다.')" class="btn btn-primary" id="report_button">리포트 접수</button>
-      </div>
-    </form>
+  <section class="section" id="top_title">
+    <h1 class="title">
+      테스트 및 서비스 관련하여 리포트를 남겨주시면 조치하겠습니다.
+    </h1><br>
+    <h2 class="subtitle">
+      아래 메세지 박스에 문제내용을 기재한 후 접수부탁드립니다.
+    </h2>
+  </section>
 
-    <div class="container" id="result_box">
+  <form action="/report" method="post" enctype="multipart/form-data" class="field field-report">
+    <div class="select">
+      <select name="category">
+        <option>기능 개선 관련</option>
+        <option>기능/정보 오류 관련</option>
+        <option>기타</option>
+      </select>
     </div>
 
-    <footer class="footer">
-        <div class="content has-text-centered">
-            <p>
-                <strong>AirBnB Aid</strong> by <a href="https://aboutcoding.tistory.com/entry/Green-Aid-%EB%B6%80%EA%B0%80%EC%88%98%EC%9E%85%EC%9D%84-%EC%95%88%EC%A0%84%ED%95%98%EA%B2%8C-%EB%A7%8C%EB%93%A4-%EC%88%98-%EC%9E%88%EB%8F%84%EB%A1%9D-%EB%8F%95%EC%8A%B5%EB%8B%88%EB%8B%A4">It-Jason-Yang</a>.<br>
-                <b>Email :</b> joohyuk.yang00@gmail.com
-            </p>
-        </div>
-    </footer>
+    <div class="file has-name">
+      <label class="file-label">
+        <input class="file-input" type="file" accept="image/*" onchange="fileChk(this)" name="image-upload">
+        <span class="file-cta">
+          <span class="file-icon">
+            <i class="fas fa-upload"></i>
+          </span>
+          <span class="file-label">
+            이미지 업로드
+          </span>
+        </span>
+        <span class="file-name" id="img-name">
+          이미지파일만 첨부할 수 있습니다.
+        </span>
+      </label>
+    </div>
+
+    <div class="control">
+      <textarea name="content" class="textarea" placeholder="내용을 입력해주세요."></textarea>
+    </div>
+    <div id="report_footer">
+      <button type="submit" onclick="alert('접수되었습니다.')" class="btn btn-primary" id="report_button">리포트 접수</button>
+    </div>
+  </form>
+
+  <div class="container" id="result_box">
+  </div>
+
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>AirBnB Aid</strong> by <a
+          href="https://aboutcoding.tistory.com/entry/Green-Aid-%EB%B6%80%EA%B0%80%EC%88%98%EC%9E%85%EC%9D%84-%EC%95%88%EC%A0%84%ED%95%98%EA%B2%8C-%EB%A7%8C%EB%93%A4-%EC%88%98-%EC%9E%88%EB%8F%84%EB%A1%9D-%EB%8F%95%EC%8A%B5%EB%8B%88%EB%8B%A4"
+          target="_blank">It-Jason-Yang</a>.<br>
+        <b>Email :</b> joohyuk.yang00@gmail.com
+      </p>
+    </div>
+  </footer>
 
 </body>
 

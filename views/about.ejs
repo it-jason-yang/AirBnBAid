@@ -12,13 +12,47 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-85FX2TLV3B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-85FX2TLV3B');
+    </script>
+
     <meta charset="UTF-8">
     <meta property="og:title" content="방문을 환영합니다 | AirBnBAid" />
     <meta property="og:description" content="임대 또는 소유하고있는 집을 공유하고 싶다면 합법적으로 운영할 수 있는지 체크해보세요!" />
     <meta property="og:image" content="{{ url_for('images', filename='og_abba.png') }}" />
 
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
 
+            // Get all "navbar-burger" elements
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+            // Check if there are any navbar burgers
+            if ($navbarBurgers.length > 0) {
+
+                // Add a click event on each of them
+                $navbarBurgers.forEach(el => {
+                    el.addEventListener('click', () => {
+
+                        // Get the target from the "data-target" attribute
+                        const target = el.dataset.target;
+                        const $target = document.getElementById(target);
+
+                        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                        el.classList.toggle('is-active');
+                        $target.classList.toggle('is-active');
+
+                    });
+                });
+            }
+
+        });
     </script>
 
     <title>
@@ -28,11 +62,9 @@
 </head>
 
 <body>
-
     <style>
 
     </style>
-
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
@@ -50,16 +82,16 @@
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
                 <a class="navbar-item" href="/">
-                  TEST
+                    TEST
                 </a>
                 <a class="navbar-item" href="/about">
-                  About AirBnB Aid
+                    About AirBnB Aid
                 </a>
                 <hr class="navbar-divider">
                 <a class="navbar-item" href="/report">
-                  Report an issue
+                    Report an issue
                 </a>
-              </div>
+            </div>
 
             <div class="navbar-end">
                 <!-- <div class="navbar-item">
@@ -110,7 +142,9 @@
     <footer class="footer">
         <div class="content has-text-centered">
             <p>
-                <strong>AirBnB Aid</strong> by <a href="https://aboutcoding.tistory.com/entry/Green-Aid-%EB%B6%80%EA%B0%80%EC%88%98%EC%9E%85%EC%9D%84-%EC%95%88%EC%A0%84%ED%95%98%EA%B2%8C-%EB%A7%8C%EB%93%A4-%EC%88%98-%EC%9E%88%EB%8F%84%EB%A1%9D-%EB%8F%95%EC%8A%B5%EB%8B%88%EB%8B%A4">It-Jason-Yang</a>.<br>
+                <strong>AirBnB Aid</strong> by <a
+                    href="https://aboutcoding.tistory.com/entry/Green-Aid-%EB%B6%80%EA%B0%80%EC%88%98%EC%9E%85%EC%9D%84-%EC%95%88%EC%A0%84%ED%95%98%EA%B2%8C-%EB%A7%8C%EB%93%A4-%EC%88%98-%EC%9E%88%EB%8F%84%EB%A1%9D-%EB%8F%95%EC%8A%B5%EB%8B%88%EB%8B%A4"
+                    target="_blank">It-Jason-Yang</a>.<br>
                 <b>Email :</b> joohyuk.yang00@gmail.com
             </p>
         </div>
