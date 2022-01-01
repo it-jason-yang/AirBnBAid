@@ -33,8 +33,15 @@
   <script>
     const fileChk = (input) => {
       let file = input.files[0];
-      let name = document.getElementById('img-name');
-      name.textContent = file.name;
+      alert(file.size)
+      alert(file.size + 100)
+      if (file.size >= (5 * 1024 * 1024)) {
+        alert("이미지 파일 크기는 5 MB 를 초과할 수 없습니다.");
+        return
+      } else {
+        let name = document.getElementById('img-name');
+        name.textContent = file.name;
+      }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
