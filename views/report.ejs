@@ -31,16 +31,23 @@
   <meta property="og:image" content="{{ url_for('images', filename='og_abba.png') }}" />
 
   <script>
+    //파일첨부 시 파일이름 출력
     const fileChk = (input) => {
       let file = input.files[0];
-      alert(file.size)
-      alert(file.size + 100)
+      let name = document.getElementById('img-name');
+      name.textContent = file.name;
+    }
+
+    //리포트 접수 시 파일 크기 체크
+    const submitFileChk = () => {
+      let reportForm = document.reportForm;
+      let input = document.querySelector('#report-img-input');
+      let file = input.files[0];
       if (file.size >= (5 * 1024 * 1024)) {
         alert("이미지 파일 크기는 5 MB 를 초과할 수 없습니다.");
-        return
-      } else {
-        let name = document.getElementById('img-name');
-        name.textContent = file.name;
+      }else{
+        alert('접수되었습니다.')
+        reportForm.submit();
       }
     }
 
@@ -128,7 +135,7 @@
     </h2>
   </section>
 
-  <form action="/report" method="post" enctype="multipart/form-data" class="field field-report">
+  <form name="reportForm" action="/report" method="post" enctype="multipart/form-data" class="field field-report">
     <div class="select">
       <select name="category">
         <option>기능 개선 관련</option>
@@ -139,7 +146,7 @@
 
     <div class="file has-name">
       <label class="file-label">
-        <input class="file-input" type="file" accept="image/*" onchange="fileChk(this)" name="image-upload">
+        <input class="file-input" id="report-img-input" type="file" accept="image/*" onchange="fileChk(this)" name="image-upload">
         <span class="file-cta">
           <span class="file-icon">
             <i class="fas fa-upload"></i>
@@ -158,10 +165,9 @@
       <textarea name="content" class="textarea" placeholder="내용을 입력해주세요."></textarea>
     </div>
     <div id="report_footer">
-      <button type="submit" onclick="alert('접수되었습니다.')" class="btn btn-primary" id="report_button">리포트 접수</button>
+      <button type="button" onclick="submitFileChk()" class="btn btn-primary" id="report_button">리포트 접수</button>
     </div>
   </form>
-
   <div class="container" id="result_box">
   </div>
 
